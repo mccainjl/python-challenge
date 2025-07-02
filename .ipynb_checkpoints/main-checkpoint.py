@@ -5,8 +5,8 @@
 import os
 import csv
 
-pybankdata = os.path.join("..", "Resources", "budget_data.csv")
-output = os.path.join("..", "pybank.txt")
+pybankdata = os.path.join("Resources", "budget_data.csv")
+output = os.path.join("pybank.txt")
 
 ##Set parameters
 
@@ -18,19 +18,19 @@ averagechange = 0.0
 #read csv
 
 with open(pybankdata) as csvfile:
-    csvreader = csv.reader(delimeter = ",")
+    csvreader = csv.reader(csvfile, delimiter = ",")
 
     header = next(csvreader)
 
 ## make calculations    
     first_row = next(csvreader)
-    months = months +=1
-    profitloss = profitloss+=int(row[1])
-    prev_net = int(row[1])
+    months+=1
+    profitloss+=int(first_row[1])
+    prev_net = int(first_row[1])
         
     for row in csvreader:   
-        months = months+=1
-        profitloss = profitloss+=int(row[1])
+        months+=1
+        profitloss+=int(row[1])
         change = int(row[1])-prev_net
         changes.append(change)
         prev_net = int(row[1])
@@ -41,6 +41,6 @@ greatestdecrease = min(changes)
         
 ##print answer
 
-print("Financial Analysis\n___________________________\nTotal Months: " + str(months) + "\nNet Profit/Loss: " + str(profitloss) + "\nAverage Change: " + str(averagechange) + "\nGreatest Increase: " + str(greatestincrease) + "\nGreatest Decrease: " + str(greatestdecrease)
+print("Financial Analysis\n___________________________\nTotal Months: " + str(months) + "\nNet Profit/Loss: " + str(profitloss) + "\nAverage Change: " + str(averagechange) + "\nGreatest Increase: " + str(greatestincrease) + "\nGreatest Decrease: " + str(greatestdecrease))
 
 ##output file
