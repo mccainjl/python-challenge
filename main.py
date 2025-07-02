@@ -52,3 +52,7 @@ averagechange = sum(changes)/len(changes)
 print("\nFinancial Analysis\n--------------------------------\nTotal Months: " + str(months) + "\nNet Profit/Loss: $" + str(profitloss) + "\nAverage Change: $" + str(round(averagechange,2)) + "\nGreatest Increase: $" + str(maxincrease) + " " + maxmonth + "\nGreatest Decrease: $" + str(maxdecrease) + " " + minmonth)
 
 ##output file
+
+with open(output, "w") as txtfile:
+    txtfile.write("\nFinancial Analysis\n--------------------------------\nTotal Months: " + str(months) + "\nNet Profit/Loss: $" + str(profitloss) + "\nAverage Change: $" + str(round(averagechange,2)) + "\nGreatest Increase: $" + str(maxincrease) + " " + maxmonth + "\nGreatest Decrease: $" + str(maxdecrease) + " " + minmonth)
+    
