@@ -19,6 +19,8 @@ totalvotes = 0
 
 with open(pypolldata) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
+
+    header = next(csvreader)
     
 ## Make tallies
 
@@ -32,15 +34,25 @@ with open(pypolldata) as csvfile:
 
 winner = max(votes.values())
 
-print("\nElection Results \n------------------------------\nTotal Votes: " + str(totalvotes) + "\n-------------------------------------\n")
-for candidate in votes:
-    print(candidate)
-        
-
-
-
 ##Print output
 
+Election_results = "\nElection Results \n------------------------------\nTotal Votes: " + str(totalvotes) + "\n-------------------------------------\n"
+
+candidate_votes = votes.get(candidate)
+vote_percentage = float(candidate_votes) / float(totalvotes) * 100
+
+voter_output = f"{candidate}: {vote_percentage:.3f}% ({votes})\n"
+
+winner_announcement = f"-----------------------------------\nWinner: {winner}\n------------------------------------------"
+
+print(Election_results)
+print(voter_output)
+print(winner_announcement)
 
 
 ##Write output file
+
+with open(pypolloutput) as txtfile:
+    txtfile.write(Election_results)
+    txtfile.write(voter_output)
+    txtfile.write(winner_announcement)
