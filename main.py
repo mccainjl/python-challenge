@@ -6,7 +6,7 @@ import os
 import csv
 
 pybankdata = os.path.join("Resources", "budget_data.csv")
-output = os.path.join("pybank.txt")
+pybankoutput = os.path.join("pybank.txt")
 
 ##Set parameters
 
@@ -53,6 +53,8 @@ print("\nFinancial Analysis\n--------------------------------\nTotal Months: " +
 
 ##output file
 
-with open(output, "w") as txtfile:
+with open(pybankoutput, "w") as txtfile:
     txtfile.write("\nFinancial Analysis\n--------------------------------\nTotal Months: " + str(months) + "\nNet Profit/Loss: $" + str(profitloss) + "\nAverage Change: $" + str(round(averagechange,2)) + "\nGreatest Increase: $" + str(maxincrease) + " " + maxmonth + "\nGreatest Decrease: $" + str(maxdecrease) + " " + minmonth)
+
+
     
