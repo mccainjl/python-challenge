@@ -49,6 +49,6 @@ averagechange = sum(changes)/len(changes)
         
 ##print answer
 
-print("Financial Analysis\n___________________________\nTotal Months: " + str(months) + "\nNet Profit/Loss: $" + str(profitloss) + "\nAverage Change: $" + str(averagechange) + "\nGreatest Increase: $" + str(maxincrease) + maxmonth + "\nGreatest Decrease: $" + str(maxdecrease) + minmonth)
+print("\nFinancial Analysis\n--------------------------------\nTotal Months: " + str(months) + "\nNet Profit/Loss: $" + str(profitloss) + "\nAverage Change: $" + str(round(averagechange,2)) + "\nGreatest Increase: $" + str(maxincrease) + " " + maxmonth + "\nGreatest Decrease: $" + str(maxdecrease) + " " + minmonth)
 
 ##output file
