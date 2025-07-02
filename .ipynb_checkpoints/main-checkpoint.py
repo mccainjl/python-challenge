@@ -14,6 +14,10 @@ months = 0
 profitloss = 0
 changes = []
 averagechange = 0.0
+maxincrease = 0
+maxdecrease = 0
+maxmonth = ""
+minmonth = ""
 
 #read csv
 
@@ -34,13 +38,17 @@ with open(pybankdata) as csvfile:
         change = int(row[1])-prev_net
         changes.append(change)
         prev_net = int(row[1])
+        if change > maxincrease:
+            maxincrease = change
+            maxmonth = row[0]
+        if change < maxdecrease:
+            maxdecrease = change
+            minmonth = row[0]
         
 averagechange = sum(changes)/len(changes)
-greatestincrease = max(changes)
-greatestdecrease = min(changes)
         
 ##print answer
 
-print("Financial Analysis\n___________________________\nTotal Months: " + str(months) + "\nNet Profit/Loss: " + str(profitloss) + "\nAverage Change: " + str(averagechange) + "\nGreatest Increase: " + str(greatestincrease) + "\nGreatest Decrease: " + str(greatestdecrease))
+print("Financial Analysis\n___________________________\nTotal Months: " + str(months) + "\nNet Profit/Loss: $" + str(profitloss) + "\nAverage Change: $" + str(averagechange) + "\nGreatest Increase: $" + str(maxincrease) + maxmonth + "\nGreatest Decrease: $" + str(maxdecrease) + minmonth)
 
 ##output file
